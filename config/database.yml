@@ -20,7 +20,8 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: postgres
   password: postgres
-  database_url: postgres://{user}:{password}@{hostname}:{port}/{database}
+  port: 5432
+  database_url: postgres://{username}:{password}@{hostname}:{port}/{database}
 
 development:
   <<: *default
