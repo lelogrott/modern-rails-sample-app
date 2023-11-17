@@ -3,9 +3,7 @@
 one:
   email: MyString
   password_digest: MyString
-  password_confirmation: MyString
 
 two:
   email: MyString
   password_digest: MyString
-  password_confirmation: MyString
