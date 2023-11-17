@@ -21,11 +21,11 @@ default: &default
   username: postgres
   password: postgres
   port: 5432
-  database_url: postgres://{username}:{password}@{hostname}:{port}/{database}
 
 development:
   <<: *default
   database: bark_development
+  database_url: postgres://{username}:{password}@{hostname}:{port}/{database}
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
@@ -60,7 +60,7 @@ development:
 test:
   <<: *default
   database: bark_test
-  database_url: postgres://{user}:{password}@{hostname}:{port}/{database-name}
+  database_url: postgres://{username}:{password}@{hostname}:{port}/{database}
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -87,3 +87,4 @@ production:
   database: bark_production
   username: bark
   password: <%= ENV["BARK_DATABASE_PASSWORD"] %>
+  database_url: postgres://{username}:{password}@{hostname}:{port}/{database}
