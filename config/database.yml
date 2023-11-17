@@ -86,3 +86,4 @@ production:
   database: bark_production
   username: bark
   password: <%= ENV["BARK_DATABASE_PASSWORD"] %>
+  url: <%= ENV["BARK_DATABASE_URL"] %>

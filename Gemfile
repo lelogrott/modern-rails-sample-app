@@ -56,6 +56,10 @@ group :development, :test do
   gem 'pry-rescue'
   gem 'pry-stack_explorer'
   gem 'pry-theme'
+
+  # linter
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
 end
 
 group :development do

@@ -1,3 +1,5 @@
+[![Rails Style Guide](https://img.shields.io/badge/code_style-community-brightgreen.svg)](https://rails.rubystyle.guide)
+
 # Bark - Product Challenge
 # README
 
