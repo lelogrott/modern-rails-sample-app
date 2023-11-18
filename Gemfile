@@ -61,9 +61,9 @@ group :development, :test do
   gem 'pry-theme'
 
   # rspec for testing
-  gem "rspec-rails"
-  gem "factory_bot_rails"
-  gem "faker"
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'rspec-rails'
 
   # linter
   gem 'rubocop', require: false
