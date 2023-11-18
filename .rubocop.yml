@@ -2,6 +2,7 @@ require: rubocop-rails
 
 AllCops:
   NewCops: enable
+  SuggestExtensions: false
   Exclude:
     - bin/**/*
     - db/**/*
@@ -29,6 +30,7 @@ Metrics/BlockLength:
     - '**/spec/**/*'
     - '**/testing/**/*'
     - '**/db/**/*'
+    - 'config/environments/*'
 
 Metrics/ClassLength:
   Exclude:
@@ -39,6 +41,13 @@ Metrics/MethodLength:
     - '**/spec/**/*'
     - '**/testing/**/*'
     - '**/db/**/*'
+
+# Rubocop Ruby Style
+
+Style/Documentation:
+  Exclude:
+    - '**/db/**/*'
+    - '**/test/**/*'
 
 # Rubocop Lint
 
