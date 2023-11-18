@@ -1,0 +1,60 @@
+require: rubocop-rails
+
+AllCops:
+  NewCops: enable
+  SuggestExtensions: false
+  Exclude:
+    - bin/**/*
+    - db/**/*
+    - node_modules/**/*
+    - script/**/*
+    - tmp/**/*
+    - vendor/**/*
+
+# Rubocop Metrics
+
+Metrics/AbcSize:
+  Exclude:
+    - '**/db/**/*'
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - '**/db/**/*'
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - '**/db/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - '**/spec/**/*'
+    - '**/testing/**/*'
+    - '**/db/**/*'
+    - 'config/environments/*'
+
+Metrics/ClassLength:
+  Exclude:
+    - '**/db/**/*'
+
+Metrics/MethodLength:
+  Exclude:
+    - '**/spec/**/*'
+    - '**/testing/**/*'
+    - '**/db/**/*'
+
+# Rubocop Ruby Style
+
+Style/Documentation:
+  Exclude:
+    - '**/db/**/*'
+    - '**/test/**/*'
+
+# Rubocop Lint
+
+Layout/LineLength:
+  Exclude:
+    - Gemfile
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - spec/**/*
