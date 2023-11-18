@@ -8,6 +8,7 @@ AllCops:
     - node_modules/**/*
     - script/**/*
     - tmp/**/*
+    - vendor/**/*
 
 # Rubocop Metrics
 
