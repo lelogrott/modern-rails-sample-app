@@ -1,27 +1,36 @@
-<%= form_with(model: user) do |form| %>
-  <% if user.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<div class='container'>
+  <%= form_with(model: user) do |form| %>
+    <% if user.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-        <% user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% user.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class='row'>
+      <div class='col-sm-2'>
+        <%= form.label :email %>
+      </div>
+      <div class='col-sm-4'>
+        <%= form.text_field :email %>
+      </div>
     </div>
-  <% end %>
 
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
-  </div>
+    <div class='row'>
+      <div class='col-sm-2'>
+        <%= form.label :password_digest  %>
+      </div>
+      <div class='col-sm-4'>
+        <%= form.password_field :password_digest, { class: 'column-4' }%>
+      </div>
+    </div>
 
-  <div>
-    <%= form.label :password_digest, style: "display: block" %>
-    <%= form.password_field :password_digest %>
-  </div>
 
-  <div>
     <%= form.submit %>
-  </div>
-<% end %>
+  <% end %>
+</div>
