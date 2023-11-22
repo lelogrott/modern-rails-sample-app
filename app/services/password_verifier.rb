@@ -5,10 +5,10 @@ class PasswordVerifier
   attr_accessor :user, :password
 
   RULES = [
-    { text: 'Has more than 8 characters', verify: ->(pwd) { pwd ? pwd.size > 8 : false} },
-    { text: 'Has at least one downcase letter', verify: ->(pwd) { pwd ? pwd.match(/[a-z]/).present? : false} },
-    { text: 'Has at least one uppercase letter', verify: ->(pwd) { pwd ? pwd.match(/[A-Z]/).present? : false} },
-    { text: 'Has at least one number', verify: ->(pwd) { pwd ? pwd.match(/[0-9]/).present? : false} },
+    { text: 'Has more than 8 characters', verify: ->(pwd) { pwd ? pwd.size > 8 : false } },
+    { text: 'Has at least one downcase letter', verify: ->(pwd) { pwd ? pwd.match(/[a-z]/).present? : false } },
+    { text: 'Has at least one uppercase letter', verify: ->(pwd) { pwd ? pwd.match(/[A-Z]/).present? : false } },
+    { text: 'Has at least one number', verify: ->(pwd) { pwd ? pwd.match(/[0-9]/).present? : false } },
     { text: 'Has at least one special character',
       verify: ->(pwd) { pwd ? pwd.match(/(?=.*?[_!#@$?])/).present? : false } }
   ].freeze
