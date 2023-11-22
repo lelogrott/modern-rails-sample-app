@@ -1,5 +1,6 @@
 <div class='container'>
-  <%= form_with(model: user) do |form| %>
+  <div id="preview"></div>
+  <%= form_with(model: user, data: { controller: 'autosubmit', action: 'input->autosubmit#submit'}) do |form| %>
     <% if user.errors.any? %>
       <div style="color: red">
         <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -30,7 +31,12 @@
       </div>
     </div>
 
-
-    <%= form.submit %>
+    <%= form.button 'Preview',
+          formaction: preview_users_path,
+          name: '_method',
+          value: 'post',
+          data: { autosubmit_target: 'submitbutton' },
+          hidden: true %>
+    <%= form.submit class: 'btn-primary' %>
   <% end %>
 </div>

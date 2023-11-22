@@ -57,6 +57,16 @@ class UsersController < ApplicationController
     end
   end
 
+  # POST /users/preview
+  # preview form validation
+  def preview
+    @preview = User.new(user_params)
+
+    respond_to do |format|
+      format.turbo_stream
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
