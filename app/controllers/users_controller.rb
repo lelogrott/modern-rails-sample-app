@@ -15,10 +15,13 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    @password_verifier = PasswordVerifier.new(@user)
   end
 
   # GET /users/1/edit
-  def edit; end
+  def edit
+    @password_verifier = PasswordVerifier.new(@user)
+  end
 
   # POST /users or /users.json
   def create
@@ -54,6 +57,16 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to users_url, notice: successful_response('destroy') }
       format.json { head :no_content }
+    end
+  end
+
+  # POST /users/preview
+  # preview form validation
+  def preview
+    @password_verifier = PasswordVerifier.new(User.new(user_params))
+
+    respond_to do |format|
+      format.turbo_stream
     end
   end
 
