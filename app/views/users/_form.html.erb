@@ -12,34 +12,39 @@
           </ul>
         </div>
       <% end %>
+      <div class='card-text'>
+        <div class='row card-text'>
+          <div class='col-sm-2'></div>
+          <div class='col-sm-3'>
+            <%= form.label :email %>
+          </div>
+          <div class='col-sm-5'>
+            <%= form.text_field :email %>
+          </div>
+          <div class='col-sm-2'></div>
+        </div>
 
-      <div class='row card-text'>
-        <div class='col-sm-2'>
-          <%= form.label :email %>
-        </div>
-        <div class='col-sm-4'>
-          <%= form.text_field :email %>
-        </div>
-      </div>
+        <br>
 
-      <div class='row'>
-        <div class='col-sm-2'>
-          <%= form.label :password_digest  %>
+        <div class='row'>
+          <div class='col-sm-2'></div>
+          <div class='col-sm-3'>
+            <%= form.label :password_digest  %>
+          </div>
+          <div class='col-sm-5'>
+            <%= form.password_field :password_digest, { class: 'column-4' }%>
+          </div>
+          <div class='col-sm-2'></div>
         </div>
-        <div class='col-sm-4'>
-          <%= form.password_field :password_digest, { class: 'column-4' }%>
-        </div>
-      </div>
-      <div id="preview"></div>
-
-      <%= form.button 'Preview',
-            formaction: preview_users_path,
-            name: '_method',
-            value: 'post',
-            data: { autosubmit_target: 'submitbutton' },
-            hidden: true %>
-      <div class='row card-text'>
-        <div class='col-sm-3'>
+        <div id="preview"></div>
+        <br>
+        <%= form.button 'Preview',
+              formaction: preview_users_path,
+              name: '_method',
+              value: 'post',
+              data: { autosubmit_target: 'submitbutton' },
+              hidden: true %>
+        <div class='row text-center'>
           <%= form.submit class: 'btn btn-primary' %>
         </div>
       </div>
