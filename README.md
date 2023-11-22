@@ -1,4 +1,5 @@
 [![Rails Style Guide](https://img.shields.io/badge/code_style-community-brightgreen.svg)](https://rails.rubystyle.guide)
+[![main workflow](https://github.com/lelogrott/bark/actions/workflows/main.yml/badge.svg)](https://github.com/lelogrott/bark/actions/workflows/main.yml)
 
 # Bark - Product Challenge
 # README
