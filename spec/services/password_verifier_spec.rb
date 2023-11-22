@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe PasswordVerifier do
   let(:verifier) { described_class.new(user) }
-  let(:user) { create(:user, password_digest: password) }
+  let(:user) { create(:user, password:) }
   let(:password) { 'g00dPassword!' }
 
   describe 'validates rules' do
@@ -13,7 +13,7 @@ RSpec.describe PasswordVerifier do
     end
 
     context 'length validation' do
-      let(:password) { 'g00dPa!' }
+      let(:password) { 'g00dPas!' }
 
       it 'fails length validation' do
         missing_rules = verifier.rules_statuses.select { |rule| rule[:missing] }
@@ -22,7 +22,7 @@ RSpec.describe PasswordVerifier do
       end
 
       it 'passes length validation' do
-        user.password = 'g00dPas!'
+        user.password = 'g00dPass!'
         expect(verifier.rules_statuses.any? { |rule| rule[:missing] }).to be_falsey
       end
     end
@@ -37,7 +37,7 @@ RSpec.describe PasswordVerifier do
       end
 
       it 'passes downcase validation' do
-        user.password = 'g00dPas!'
+        user.password = 'g00dPass!'
         expect(verifier.rules_statuses.any? { |rule| rule[:missing] }).to be_falsey
       end
     end
@@ -52,7 +52,7 @@ RSpec.describe PasswordVerifier do
       end
 
       it 'passes uppercase validation' do
-        user.password = 'g00dPas!'
+        user.password = 'g00dPass!'
         expect(verifier.rules_statuses.any? { |rule| rule[:missing] }).to be_falsey
       end
     end
@@ -67,7 +67,7 @@ RSpec.describe PasswordVerifier do
       end
 
       it 'passes number validation' do
-        user.password = 'g00dPas!'
+        user.password = 'g00dPass!'
         expect(verifier.rules_statuses.any? { |rule| rule[:missing] }).to be_falsey
       end
     end
@@ -82,7 +82,7 @@ RSpec.describe PasswordVerifier do
       end
 
       it 'passes special character validation' do
-        user.password = 'g00dPas!'
+        user.password = 'g00dPass!'
         expect(verifier.rules_statuses.any? { |rule| rule[:missing] }).to be_falsey
       end
     end

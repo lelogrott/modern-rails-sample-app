@@ -15,7 +15,7 @@ class PasswordVerifier
 
   def initialize(user)
     @user = user
-    @password = user.password_digest
+    @password = user.password
   end
 
   def rules_statuses
