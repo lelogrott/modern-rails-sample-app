@@ -60,8 +60,15 @@ class UsersController < ApplicationController
   # POST /users/preview
   # preview form validation
   def preview
-    @preview = User.new(user_params)
-
+    password = user_params[:password_digest]
+    @password_rules = [
+      { text: 'Has more than 8 characters', missing: password.size <= 8 },
+      { text: 'Has at least one downcase letter', missing: password.match(/[a-z]/).nil? },
+      { text: 'Has at least one uppercase letter', missing: password.match(/[A-Z]/).nil? },
+      { text: 'Has at least one number', missing: password.match(/[0-9]/).nil? },
+      { text: 'Has at least one special character', missing: password.match(/(?=.*?[_!#@$?])/).nil? }
+    ]
+    @password_strength = (@password_rules.select { |rule| !rule[:missing] }.size.to_f / @password_rules.size) * 100
     respond_to do |format|
       format.turbo_stream
     end

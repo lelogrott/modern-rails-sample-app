@@ -1,0 +1,33 @@
+.card {
+  .card-body {
+    form{
+      input {
+        width: 100%;
+      }
+    }
+    .password-tips-preview-container {
+      font-size: small;
+
+      .progress {
+        --#{$prefix}progress-height: 0.4rem;
+      }
+      .row.password-tips-container {
+
+        .list-group.password-tips-list {
+          .list-group-item {
+            padding: 0;
+
+            &.rule-missing {
+              color: red;
+            }
+
+            &.rule-present {
+              color: green;
+            }
+          }
+        }
+      }
+    }
+
+  }
+}
