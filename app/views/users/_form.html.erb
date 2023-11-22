@@ -48,10 +48,10 @@
               formaction: preview_users_path,
               name: '_method',
               value: 'post',
-              data: { autosubmit_target: 'submitbutton' },
+              data: { autosubmit_target: 'previewbutton' },
               hidden: true %>
         <div class='row text-center'>
-          <%= form.submit class: 'btn btn-primary' %>
+          <%= form.submit class: 'btn btn-primary', data: { disable_with: false } %>
         </div>
       </div>
     <% end %>
