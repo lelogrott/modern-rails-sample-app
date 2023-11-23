@@ -1,6 +1,13 @@
-<div id="<%= dom_id user %>">
-  <p>
-    <strong>Email:</strong>
-    <%= user.email %>
-  </p>
+<div class='row user-card'>
+  <div id="<%= dom_id user %>" class='card'>
+    <div class='card-body'>
+      <strong>Email:</strong>
+      <%= user.email %>
+      <br>
+      <strong>Password:</strong>
+      <%= user.password_digest %>
+      <br>
+      <%= link_to "Show this user", user, class: 'btn btn-primary' %>
+    </div>
+  </div>
 </div>
