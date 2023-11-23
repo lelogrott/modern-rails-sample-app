@@ -1,8 +1,13 @@
 .card {
   .card-body {
-    form{
+    form {
       input {
         width: 100%;
+      }
+    }
+    .form-action-buttons {
+      input {
+        margin-bottom: 0.4rem;
       }
     }
     .password-tips-preview-container {
@@ -28,6 +33,5 @@
         }
       }
     }
-
   }
 }

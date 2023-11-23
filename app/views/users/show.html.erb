@@ -1,10 +1,18 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @user %>
-
-<div>
-  <%= link_to "Edit this user", edit_user_path(@user) %> |
-  <%= link_to "Back to users", users_path %>
-
-  <%= button_to "Destroy this user", @user, method: :delete %>
+<div id="users" class='container'>
+  <div class='row users-list'>
+    <div class='col-sm-3'></div>
+    <div class='col-sm-6'>
+      <div class='row'>
+        <div class='col-sm-6 text-start'>
+          <h1>User</h1>
+        </div>
+        <div class='col-sm-6 text-end align-middle'>
+          <%= link_to "Back to users", users_path, class: 'btn btn-primary' %>
+        </div>
+      </div>
+      <p style="color: green"><%= notice %></p>
+      <%= render @user, render_show_button: false %>
+    </div>
+    <div class='col-sm-3'></div>
+  </div>
 </div>

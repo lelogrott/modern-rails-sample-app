@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
   # POST /users or /users.json
   def create
-    @user = User.new(user_params)
+    set_user_and_verifier
     respond_to do |format|
       if @user.save
         format.html { redirect_to user_url(@user), notice: successful_response('create') }
@@ -75,6 +75,11 @@ class UsersController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def set_user_and_verifier
+    @user = User.new(user_params)
+    @password_verifier = PasswordVerifier.new(@user)
   end
 
   # Only allow a list of trusted parameters through.
