@@ -1,0 +1,60 @@
+name: Build, Lint, and Test Modern Rails Sample App
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        # Docker Hub image
+        image: postgres:15.4
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: postgres
+          POSTGRES_DB: modern_rails_sample_app_test
+        ports:
+          - 5432:5432
+        # Set health checks to wait until postgres has started
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.17'
+
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle config set --local path 'vendor/bundle'
+          bundle install --jobs 4 --retry 3
+          yarn install --frozen-lockfile
+
+      - name: Database setup
+        run: |
+          bundle exec rails db:create db:schema:load RAILS_ENV=test
+
+      - name: Run RuboCop
+        run: |
+          bundle exec rubocop
+
+      - name: Run tests
+        run: |
+          bundle exec rspec # Replace with your test command if using something other than RSpec

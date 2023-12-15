@@ -1,0 +1,17 @@
+<div class='row user-card'>
+  <div id="<%= dom_id user %>" class='card'>
+    <div class='card-body'>
+      <strong>Email:</strong>
+      <%= user.email %>
+      <br>
+      <strong>Password:</strong>
+      <%= user.password_digest %>
+      <br>
+      <div class='action-buttons'>
+        <%= link_to "Show this user", user, class: 'btn btn-primary' if render_show_button %>
+        <%= link_to "Edit this user", edit_user_path(user), class: 'btn btn-primary' unless render_show_button %>
+        <%= button_to "Destroy this user", user, method: :delete, class: 'btn btn-danger'%>
+      </div>
+    </div>
+  </div>
+</div>

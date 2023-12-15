@@ -1,0 +1,62 @@
+<div class='row'>
+  <div class='card container'>
+    <div class='card-body'>
+      <%= form_with(model: user, data: { controller: 'autosubmit', action: 'input->autosubmit#submit'}) do |form| %>
+        <% if user.errors.any? %>
+          <div style="color: red">
+            <ul>
+              <% user.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class='card-text'>
+          <div class='row card-text'>
+            <div class='col-sm-2'></div>
+            <div class='col-sm-3'>
+              <%= form.label :email %>
+            </div>
+            <div class='col-sm-5'>
+              <%= form.text_field :email %>
+            </div>
+            <div class='col-sm-2'></div>
+          </div>
+
+          <br>
+
+          <div class='row'>
+            <div class='col-sm-2'></div>
+            <div class='col-sm-3'>
+              <%= form.label :password  %>
+            </div>
+            <div class='col-sm-5'>
+              <%= form.password_field :password %>
+            </div>
+            <div class='col-sm-2'></div>
+          </div>
+
+          <div class='row'>
+            <div class='col-sm-2'></div>
+            <div id='preview' class='col-sm-8'>
+              <%= render "password_tips", password_verifier: @password_verifier %>
+            </div>
+            <div class='col-sm-2'></div>
+          </div>
+          <br>
+          <%= form.button 'Preview',
+                formaction: preview_users_path,
+                name: '_method',
+                value: 'post',
+                data: { autosubmit_target: 'previewbutton' },
+                hidden: true %>
+          <div class='row text-center form-action-buttons'>
+            <%= form.submit class: 'btn btn-primary', data: { disable_with: false } %>
+            <%= link_to "Cancel", @user, class: 'btn btn-secondary' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
